@@ -49,7 +49,3 @@ class Predict:
 		_ = self.model_builder.fit(self.train, self.tr_labels)
 		predicted = self.model_builder.predict(self.test)
 		print("80-20 split accuracy:" + str(np.mean(predicted == self.te_labels)))
-		print(precision_recall_fscore_support(self.te_labels, predicted, average=None, labels=[0, 1])[2])
-
-
-
