@@ -8,7 +8,7 @@ class Parser:
 	@staticmethod
 	def read_files(dir_name, class_type, dump_name):
 		files = {}
-		fp = open(dump_name, 'w')
+		fp = open(dump_name, 'wb')
 		dir = dir_name
 
 		for file in os.listdir(dir+class_type):
@@ -18,8 +18,8 @@ class Parser:
 			soup = BeautifulSoup(codecs.open(dir + class_type + "/" + file, encoding='utf8'), "html5lib")
 			files[str(file)] = soup.get_text()
 
-		fp = open(dump_name, 'w')
-		pickle.dump(files, fp)
+		with open(dump_name, 'wb') as handle:
+			pickle.dump(files, handle)
 
 	@staticmethod
 	def parse():
