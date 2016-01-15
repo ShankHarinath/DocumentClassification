@@ -3,24 +3,24 @@ import codecs
 import pickle
 from bs4 import BeautifulSoup
 
-pos_files = {}
-dir = "/Users/Shank/Downloads/training/positive"
+class Parser:
+	
+	@staticmethod
+	def read_files(dir_name, class_type, dump_name):
+		files = {}
+		fp = open(dump_name, 'wb')
+		dir = dir_name
 
-for file in os.listdir(dir):
-	print(file)
-	soup = BeautifulSoup(codecs.open(dir+"/"+file, encoding='utf8'), "html5lib")
-	pos_files[str(file)] = soup.get_text()
+		for file in os.listdir(dir):
+			print(file)
+			soup = BeautifulSoup(codecs.open(dir + class_type + "/" + file, encoding='utf8'), "html5lib")
+			files[str(file)] = soup.get_text()
 
-pos = open('pos.pkl', 'wb')
-pickle.dump(pos_files, pos)
+		fp = open(dump_name, 'wb')
+		pickle.dump(files, fp)
 
-neg_files = {}
-dir = "/Users/Shank/Downloads/training/negative"
-
-for file in os.listdir(dir):
-	print(file)
-	soup = BeautifulSoup(codecs.open(dir+"/"+file, encoding='utf8'), "html5lib")
-	neg_files[str(file)] = soup.get_text()
-
-neg = open('neg.pkl', 'wb')
-pickle.dump(neg_files, neg)
+	@staticmethod
+	def parse():
+		dir = "/Users/Shank/Downloads/training/"
+		read_files(dir, 'positive', 'pos.pkl')
+		read_files(dir, 'negative', 'neg.pkl')
