@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn import cross_validation
 from sklearn.cross_validation import train_test_split
+from sklearn.metrics import precision_recall_fscore_support
 import pickle
 import numpy as np
 from numpy import array
@@ -39,6 +40,7 @@ class Predict:
 			_ = self.model_builder.fit(self.X[tr], self.y[tr])
 			predicted = self.model_builder.predict(self.X[te])
 			res.append(np.mean(predicted == self.y[te]))
+			print(precision_recall_fscore_support(self.y[te], predicted, average=None, labels=[0, 1])[2])
 
 		print(str(fold) + "-fold cross validation:")
 		print(res)
@@ -46,7 +48,8 @@ class Predict:
 	def classfication_split(self):
 		_ = self.model_builder.fit(self.train, self.tr_labels)
 		predicted = self.model_builder.predict(self.test)
-		print("80-20 split accuracy:" + np.mean(predicted == self.te_labels))
+		print("80-20 split accuracy:" + str(np.mean(predicted == self.te_labels)))
+		print(precision_recall_fscore_support(self.te_labels, predicted, average=None, labels=[0, 1])[2])
 
 
 
