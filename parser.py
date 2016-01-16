@@ -22,7 +22,7 @@ class Parser:
 			pickle.dump(files, handle)
 
 	@staticmethod
-	def parse():
-		dir = "/Users/Shank/Downloads/training/"
-		read_files(dir, 'positive', 'pos1.pkl')
-		read_files(dir, 'negative', 'neg.pkl')
+	def parse(path):
+		dir = path
+		Parser.read_files(dir, 'positive', 'pos1.pkl')
+		Parser.read_files(dir, 'negative', 'neg.pkl')

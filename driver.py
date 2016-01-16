@@ -2,16 +2,16 @@ from parser import Parser
 from prediction import Predict
 from extraction import Extract
 
-def classification():
-	Parser.parse()
+def classification(path):
+	Parser.parse(path)
 	predict = Predict()
 	predict.classfication_split()
 	predict.classification_cv(5)
 
-def extraction():
+def extraction(file):
 	extract = Extract()
-	extract.parse_docs("/Users/Shank/Downloads/training/positive/Abdominal_defects")
+	extract.parse_docs(file)
 
 if __name__ == "__main__":
-	classification()
-	extraction()
+	classification("/Users/Shank/Downloads/training/")
+	extraction("/Users/Shank/Downloads/training/positive/Abdominal_defects")
