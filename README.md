@@ -15,3 +15,12 @@
 Loss function: Hinge loss
 
 # Edge case 2 handled!
+
+#Information Retreival:
+Symptoms, causes, prognosis, prevention and treatment information for a given document will be extracted, if exists.
+
+# Execution Procedure:
+
+`python driver.py` will run both classification adn the informtaion retreival.
+Informtaion retreival happens for an individual file. We need to pass the entire file path in the 'driver.py' file.
+
