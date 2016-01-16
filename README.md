@@ -24,3 +24,5 @@ Symptoms, causes, prognosis, prevention and treatment information for a given do
 `python driver.py` will run both classification adn the informtaion retreival.
 Informtaion retreival happens for an individual file. We need to pass the entire file path in the 'driver.py' file.
 
+Note: Please change the path and file names in the 'driver.py' before execution.
+
